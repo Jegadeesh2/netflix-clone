@@ -1,0 +1,21 @@
+{
+  "name": "netflix-clone",
+  "version": "1.0.0",
+  "description": "# Movies",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd netflix-api && npm install  && cd ../netflix-ui && npm install && npm run build",
+    "start": "node netflix-api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jegadeesh2/netflix-clone"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jegadeesh2/netflix-clone/issues"
+  },
+  "homepage": "https://github.com/Jegadeesh2/netflix-clone#readme"
+}
