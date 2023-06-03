@@ -24,5 +24,5 @@ mongoose
 app.use("/api/user", userRoutes);
 
 app.listen(PORT, () => {
-  console.log("server started on port 5000");
+  console.log("server started on PORT : 5000");
 });
