@@ -14,7 +14,7 @@ const UserListedMovies = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [email, setEmail] = useState(undefined);
-  
+
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) setEmail(currentUser.email);
     else navigate("/login");
@@ -24,7 +24,7 @@ const UserListedMovies = () => {
     if (email) {
       dispatch(getUsersLikedMovies(email));
     }
-  }, [email]);
+  }, [email, dispatch]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
