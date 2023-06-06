@@ -26,7 +26,7 @@ module.exports.addToLikedMovies = async (req, res) => {
             likedMovies: [...user.likedMovies, data],
           },
           { new: true }
-          );
+        );
       } else return res.json({ msg: "Movie already added to the liked list." });
     } else await User.create({ email, likedMovies: [data] });
     return res.json({ msg: "Movie successfully added to liked list." });
@@ -52,7 +52,7 @@ module.exports.removeFromLikedMovies = async (req, res) => {
           likedMovies: movies,
         },
         { new: true }
-      );
+        );
       return res.json({ msg: "Movie successfully removed.", movies });
     } else return res.json({ msg: "User with given email not found." });
   } catch (error) {
