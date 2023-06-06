@@ -3,15 +3,14 @@ const cors = require("cors");
 const userRoutes = require("./routes/UserRoutes");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
-const ATLAS_URI =
-  "mongodb+srv://sjegadeeshwaran2:Jeg%40deeshwaran2@cluster0.txs4314.mongodb.net/netflix?retryWrites=true&w=majority";
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(ATLAS_URI, {
+  .connect(process.env.ATLAS_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
