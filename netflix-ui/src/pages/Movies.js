@@ -20,13 +20,13 @@ const Movies = () => {
 
   useEffect(() => {
     dispatch(getGenres());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (genresLoaded) {
-      dispatch(fetchMovies({ genres, type: "movies" }));
+      dispatch(fetchMovies({ genres, type: "movie" }));
     }
-  }, [genresLoaded,genres,dispatch]);
+  }, [genresLoaded]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -34,8 +34,6 @@ const Movies = () => {
   };
 
   const [user, setUser] = useState(undefined);
-
-console.log(user)
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) setUser(currentUser.uid);
