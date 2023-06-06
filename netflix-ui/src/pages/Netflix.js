@@ -10,10 +10,11 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { fetchMovies, getGenres } from "../store";
 import Slider from "../components/Slider";
 
-const Home = () => {
+const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+  const genres = useSelector((state) => state.netflix.genres);
   const movies = useSelector((state) => state.netflix.movies);
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
+    if (genresLoaded){ dispatch(fetchMovies({ genres, type: "all" }));}
   }, [genresLoaded]);
 
   window.onscroll = () => {
@@ -113,4 +114,4 @@ const Container = styled.div`
   }
 `;
 
-export default Home;
+export default Netflix;

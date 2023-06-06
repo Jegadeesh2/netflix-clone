@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { removeMovieFromLiked } from "../store/index";
 import video from "../assets/video.mp4";
 
-export default React.memo(function Card({index,movieData, isLiked = false }) {
+export default React.memo(function Card({ index, movieData, isLiked = false }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
@@ -93,7 +93,7 @@ export default React.memo(function Card({index,movieData, isLiked = false }) {
               </div>
             </div>
             <div className="genres flex">
-              <ul className="flex"  key={movieData.id}>
+              <ul className="flex">
                 {movieData.genres.map((genre) => (
                   <li>{genre}</li>
                 ))}

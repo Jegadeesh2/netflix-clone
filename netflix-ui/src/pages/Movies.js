@@ -12,10 +12,10 @@ import SelectGenre from "../components/SelectGenre";
 
 const Movies = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate();
-  const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
   const movies = useSelector((state) => state.netflix.movies);
   const genres = useSelector((state) => state.netflix.genres);
+  const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Movies = () => {
   }, []);
 
   useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: "movie" }));
+    if (genresLoaded) dispatch(fetchMovies({ genres, type: "movie" }));
   }, [genresLoaded]);
 
   window.onscroll = () => {

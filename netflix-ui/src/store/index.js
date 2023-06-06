@@ -19,20 +19,6 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
   return genres;
 });
 
-export const fetchMovies = createAsyncThunk(
-  "netflix/trending",
-  async ({ type }, thunkAPI) => {
-    const {
-      netflix: { genres },
-    } = thunkAPI.getState();
-    return getRawData(
-      `${BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
-      genres,
-      true
-    );
-  }
-);
-
 const createArrayFromRawData = (array, moviesArray, genres) => {
   array.forEach((movie) => {
     const movieGenres = [];
@@ -59,8 +45,8 @@ const getRawData = async (api, genres, paging = false) => {
       data: { results },
     } = await axios.get(`${api}${paging ? `&page=${i}` : " "}`);
     createArrayFromRawData(results, moviesArray, genres);
-    return moviesArray;
   }
+  return moviesArray;
 };
 
 export const fetchDataByGenre = createAsyncThunk(
@@ -72,6 +58,20 @@ export const fetchDataByGenre = createAsyncThunk(
     return getRawData(
       `${BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`,
       genres
+    );
+  }
+);
+
+export const fetchMovies = createAsyncThunk(
+  "netflix/trending",
+  async ({ type }, thunkAPI) => {
+    const {
+      netflix: { genres },
+    } = thunkAPI.getState();
+    return getRawData(
+      `${BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
+      genres,
+      true
     );
   }
 );
@@ -95,7 +95,6 @@ export const removeMovieFromLiked = createAsyncThunk(
       email,
       movieId,
     });
-    // console.log("likedMovies", data);
     return movies;
   }
 );

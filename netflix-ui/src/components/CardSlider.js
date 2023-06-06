@@ -5,7 +5,7 @@ import Card from "./Card";
 export default React.memo(function CardSlider({ data, title }) {
   const listRef = useRef();
   const [sliderPosition, setSliderPosition] = useState(0);
-  const [showButtons, setshowButtons] = useState(false);
+  const [showControls, setShowControls] = useState(false);
   const handleDirection = (direction) => {
     let distance = listRef.current.getBoundingClientRect().x - 50;
     if (direction === "left" && sliderPosition > 0) {
@@ -21,15 +21,15 @@ export default React.memo(function CardSlider({ data, title }) {
   return (
     <Container
       className="flex column"
-      // showButtons={showButtons}
-      onMouseEnter={() => setshowButtons(true)}
-      onMouseLeave={() => setshowButtons(false)}
+      showControls={showControls}
+      onMouseEnter={() => setShowControls(true)}
+      onMouseLeave={() => setShowControls(false)}
     >
       <h1>{title}</h1>
       <div className="wrapper">
         <div
           className={`slider-action left ${
-            !showButtons ? "none" : ""
+            !showControls ? "none" : ""
           } flex j-center a-center`}
         >
           <AiOutlineLeft onClick={() => handleDirection("left")} />
@@ -41,7 +41,7 @@ export default React.memo(function CardSlider({ data, title }) {
         </div>
         <div
           className={`slider-action right ${
-            !showButtons ? "none" : ""
+            !showControls ? "none" : ""
           } flex j-center a-center`}
         >
           <AiOutlineRight onClick={() => handleDirection("right")} />

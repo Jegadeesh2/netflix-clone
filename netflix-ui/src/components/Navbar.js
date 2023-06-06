@@ -15,7 +15,7 @@ const Navbar = ({ isScrolled }) => {
     if (!currentUser) navigate("/login");
   });
   const links = [
-    { name: "Home", link: "/" },
+    { name: "Netflix", link: "/" },
     { name: "TV Shows", link: "/tv" },
     { name: "Movies", link: "/movies" },
     { name: "My List", link: "/mylist" },
