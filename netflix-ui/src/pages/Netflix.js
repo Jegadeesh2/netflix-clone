@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { fetchMovies, getGenres } from "../store";
 import Slider from "../components/Slider";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 
 const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,11 +22,17 @@ const Netflix = () => {
 
   useEffect(() => {
     dispatch(getGenres());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
-    if (genresLoaded){ dispatch(fetchMovies({ genres, type: "all" }));}
-  }, [genresLoaded]);
+    if (genresLoaded) {
+      dispatch(fetchMovies({ genres, type: "all" }));
+    }
+  }, [genresLoaded,genres,dispatch]);
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+  });
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
