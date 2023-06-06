@@ -4,17 +4,18 @@
   "description": "a simple netflix clone",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon index",
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "mongoose": "^7.2.0"
   },
   "devDependencies": {
-  "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22"
   }
 }
