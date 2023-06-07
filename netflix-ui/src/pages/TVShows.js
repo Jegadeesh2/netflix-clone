@@ -19,13 +19,13 @@ const TVShows = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getGenres());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (genresLoaded) {
       dispatch(fetchMovies({ genres, type: "tv" }));
     }
-  }, [genresLoaded, genres, dispatch]);
+  }, [genresLoaded]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -33,13 +33,11 @@ const TVShows = () => {
   };
 
   const [user, setUser] = useState(undefined);
-console.log(user);
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) setUser(currentUser.uid);
     else navigate("/login");
   });
-  // console.log(user);
   return (
     <Container>
       <div className="navbar">
